@@ -14,17 +14,32 @@
     rel="stylesheet">
 
     <title>Instagram Clone :: ahnshy</title>
+
+    <style>
+    .photobox {
+        width: 50px;
+        height: 50px;
+        border-radius: 70%;
+        overflow: hidden;
+    }
+    .profile {
+        width: 90%;
+        height: 90%;
+        object-fit: cover;
+    }
+    input:focus { outline:none; box-shadow: none}
+    </style>
   </head>
       <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; width: 100%">
        <div class="container-fluid" style="justify-content: space-between; flex-wrap:nowrap; min-width: 800px">
            <a class="navbar-brand" href="#">
                <img style="width: 100px" src="/assert/logo.png" />
            </a>
            <div>
-            <input class="form-control me-2" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" style="width: 250px" type="search" placeholder="탐색" aria-label="Search">
            </div>
            <div style="justify-content: end">
                <span class="material-icons">home</span>
@@ -36,11 +51,40 @@
         </div>
    </nav>
 
-  <div style="display: flex; flex-direction: row;text-align: center;justify-content: center">
-      <div style="width: 600px; height: 1000px; background-color: lightgray">
-          Left
+  <div style="display: flex; flex-direction: row;text-align: center;justify-content: center; padding-top: 60px; background-color:rgba(var(--b3f,250,250,250),1);">
+      <div style="width: 600px; min-width:600px;height: 1000px; margin-right: 256px">
+          <div style="border: solid 1px gray; background-color: white;">
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px" >
+              <div class="photobox">
+                  <img class="profile" src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo" />
+              </div>
+              <div> ahnshy </div>
+            </div>
+
+              <div>
+                <img style="width: 100%" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">
+              </div>
+              <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 0 20px">
+                  <div>
+                      <span class="material-icons-outlined">favorite_border</span>
+                      <span class="material-icons-outlined">mode_comment</span>
+                      <span class="material-icons-outlined">send</span>
+                  </div>
+                  <div>
+                      <span class="material-icons">bookmark_border</span>
+                  </div>
+              </div>
+              <div style="text-align: left; font-size: 14px; margin: 0 20px">  jk.park 외 <strong>7명</strong>이 좋아합니다. </div>
+              <div style="text-align: left; font-size: 14px; margin: 0 20px">  <strong>kazuya</strong> 다양한 샘플링이 가능하여 좋았습니다. </div>
+              <div style="text-align: left; font-size: 14px; margin: 0 20px"> <strong>jk.park</strong> 덕분에 좋은 걸로 선택할 수 있었습니다. </div>
+              <div style="text-align: left; font-size: 14px; margin: 0 20px"> <strong>카카로트</strong> 출시 제품은 샘플링에 보여지는 색상과 다를 수 있습니다. </div>
+              <div style="text-align: left; font-size: 14px; margin: 0 20px"> <strong>LG트윈스</strong> 다른 색상으로 출시할 예정은 없으신가요? </div>
+              <hr>
+              <div> <input type="text" class="form-control" style="box-shadow: none; border: none" id="replayControl" placeholder="댓글 달기.."> </div>
+              </div>
+
       </div>
-        <div style="width: 400px; height: 1000px; background-color: darkgray">
+        <div style="width: 400px; height: 1000px; position: fixed;left:62%">
           Right
       </div>
   </div>
