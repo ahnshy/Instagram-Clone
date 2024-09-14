@@ -18,18 +18,31 @@
       <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-       <div class="container-fluid">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+       <div class="container-fluid" style="justify-content: space-between; flex-wrap:nowrap; min-width: 800px">
            <a class="navbar-brand" href="#">
                <img style="width: 100px" src="/assert/logo.png" />
            </a>
-           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           <span class="material-icons">home</span>
-           <span class="material-icons-outlined">send</span>
-           <span class="material-icons-outlined">add_box</span>
-           <span class="material-icons-outlined">explore</span>
-           <span class="material-icons-outlined">favorite_border</span>
+           <div>
+            <input class="form-control me-2" style="width: 400px" type="search" placeholder="Search" aria-label="Search">
+           </div>
+           <div style="justify-content: end">
+               <span class="material-icons">home</span>
+               <span class="material-icons-outlined">send</span>
+               <span class="material-icons-outlined">add_box</span>
+               <span class="material-icons-outlined">explore</span>
+               <span class="material-icons-outlined">favorite_border</span>
+           </div>
         </div>
    </nav>
+
+  <div style="display: flex; flex-direction: row;text-align: center;justify-content: center">
+      <div style="width: 600px; height: 1000px; background-color: lightgray">
+          Left
+      </div>
+        <div style="width: 400px; height: 1000px; background-color: darkgray">
+          Right
+      </div>
+  </div>
   </body>
 </html>
