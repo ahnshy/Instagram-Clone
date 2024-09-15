@@ -24,6 +24,26 @@
             overflow: hidden;
         }
 
+        .photobox_large {
+            width: 70px;
+            height: 70px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .photobox_candidate {
+            width: 40px;
+            height: 40px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .profile_normal {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .profile {
             width: 90%;
             height: 90%;
@@ -63,7 +83,7 @@
             position: relative;
             padding: 10px;
         }
-
+        a { text-decoration: none }
         {#input:focus { outline:none; box-shadow: none}#}
     </style>
 </head>
@@ -99,8 +119,7 @@
             </div>
 
             <div>
-                <img style="width: 100%"
-                     src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">
+                <img style="width: 100%" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg" />
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 0 20px">
                 <div>
@@ -131,14 +150,101 @@
     </div>
 
     <div style="width: 400px; height: 1000px; position: fixed;left:62%">
-        <div> 내 프로필</div>
-        <div> 회원님을 위한 추천 모두 보기</div>
-        <div> 추천인 프로필</div>
-        <div> 추천인 프로필</div>
-        <div> 추천인 프로필</div>
-        <div> 추천인 프로필</div>
-        <div> 추천인 프로필</div>
-        <div> 추천인 프로필</div>
+        <div>
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px">
+                    <div class="photobox_large" style="width:65px; height:65px">
+                        <img class="profile"
+                             src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo"/>
+                    </div>
+                    <div style="margin-left: 10px; text-align: left;">
+                        <div><strong>ahnshy</strong></div>
+                        <div style="color: rgb(128,128,128)">HoSeong, Ahn</div>
+                    </div>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items:center; justify-content: space-between">
+            <div style="font-weight: bold; color : rgb(128,128,128)">
+                회원님을 위한 추천
+            </div>
+            <div>
+                <a href="#" style="font-weight: bold">모두 보기</a>
+            </div>
+        </div>
+        <div>
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
+                <div style="display: flex; flex-direction: row">
+                    <div class="photobox_candidate">
+                        <img class="profile_normal"
+                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F003%2F2014%2F12%2F17%2FNISI20141217_0010452634_web_99_20141217164836.jpg&type=sc960_832"/>
+                    </div>
+                    <div style="margin-left: 10px; text-align: left;">
+                        <div><strong>Little Rocket Man</strong></div>
+                        <div style="color: rgb(128,128,128)">Jung il, Kim</div>
+                    </div>
+                </div>
+                <div><a href="#">팔로우</a></div>
+            </div>
+        </div>
+        <div>
+             <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
+                <div class="photobox_candidate">
+                    <img class="profile_normal"
+                         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MTJfNTUg%2FMDAxNzIwNzg0Nzk2MzIz.GgIu0rbP3NBCR8qTjWQpsb77jw4NN0lpbiurvOM7HPMg.CKSBAJtXvUKWH45I19HGG-fViqoXOp_w9gJ_1YHjJyIg.JPEG%2FIMG_6747.JPG&type=sc960_832"/>
+                </div>
+                <div style="margin-left: 10px; text-align: left;">
+                    <div><strong>Captain Park</strong></div>
+                    <div style="color: rgb(128,128,128)">Ji Seong, Park</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
+                <div class="photobox_candidate">
+                    <img class="profile_normal"
+                         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F413%2F2024%2F02%2F24%2F0000173048_002_20240224220101480.jpg&type=sc960_832"/>
+                </div>
+                <div style="margin-left: 10px; text-align: left;">
+                    <div><strong>SON</strong></div>
+                    <div style="color: rgb(128,128,128)">Heong Min, Son</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
+                <div class="photobox_candidate">
+                    <img class="profile_normal"
+                         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMTdfMjkz%2FMDAxNzEwNjM1NzQ1MTk4.zbE-0SGjNYp4LhoQaBOgGyeTipERY03KcAFXXb8flSEg.3zFIQ7GIJZlAtT8IEglrbI8EyHLuPGA_6X_nIiosNYIg.JPEG%2FChan_Ho_Park-004.jpg&type=sc960_832"/>
+                </div>
+                <div style="margin-left: 10px; text-align: left;">
+                    <div><strong>Korean Major League</strong></div>
+                    <div style="color: rgb(128,128,128)">Chan Ho, Park</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
+                <div class="photobox_candidate">
+                    <img class="profile_normal"
+                         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F020%2F2015%2F04%2F10%2Fd4_rVcKOGd_99_20150410095303.jpg&type=sc960_832"/>
+                </div>
+                <div style="margin-left: 10px; text-align: left;">
+                    <div><strong>Java Daddy</strong></div>
+                    <div style="color: rgb(128,128,128)">James Gosling</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
+                <div class="photobox_candidate">
+                    <img class="profile_normal"
+                         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MTlfMTcz%2FMDAxNzI0MDU0NDEyNjU5.RW5nXHmaGJ4QQ9h2ylALPplbxAuhVj38seIZJIwRHdIg.LeZfGQcPdlUEzLGpClQ4CEbNIgMaOnZ0OYsvHgiICUAg.JPEG%2FElon_Musk_--_Billionaire_Bachelor_%25281%2529.jpeg&type=sc960_832"/>
+                </div>
+                <div style="margin-left: 10px; text-align: left;">
+                    <div><strong>Tesla Model</strong></div>
+                    <div style="color: rgb(128,128,128)">Elon, Musk</div>
+                </div>
+            </div>
+        </div>
         <div> 소개 도움말 홍보센터</div>
         <div> 2024 Instagram Meta</div>
     </div>
