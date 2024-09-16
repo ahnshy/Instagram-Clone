@@ -1,2 +1,4 @@
 .idea/dataSources/fa973ef5-6cb0-4aaf-89aa-84f5f43c8537.xml
 .idea/dataSources/fa973ef5-6cb0-4aaf-89aa-84f5f43c8537/storage_v2/_src_/schema/main.uQUzAA.meta
+content/__pycache__/
+content/migrations/__pycache__/
