@@ -1,268 +1,379 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-    <!-- Google Material Icons -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-            rel="stylesheet">
+  <!-- Google Material Icons -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
 
-    <title>Instagram Clone :: ahnshy</title>
-
-    <style>
-        .photobox {
-            width: 50px;
-            height: 50px;
-            border-radius: 70%;
-            overflow: hidden;
-        }
-
-        .photobox_large {
-            width: 70px;
-            height: 70px;
-            border-radius: 70%;
-            overflow: hidden;
-        }
-
-        .photobox_candidate {
-            width: 40px;
-            height: 40px;
-            border-radius: 70%;
-            overflow: hidden;
-        }
-
-        .profile_normal {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile {
-            width: 90%;
-            height: 90%;
-            object-fit: cover;
-        }
-
-        .feed_box {
-            margin: 20px 0;
-            border: solid 1px gray;
-            background-color: white
-        }
-
-        .modal_overlay {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(1.5px);
-            -webkit-backdrop-filter: blur(1.5px);
-            z-index: 10000;
-        }
-
-        .modal_window {
-            background: white;
-            backdrop-filter: blur(13.5px);
-            -webkit-backdrop-filter: blur(13.5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            width: 800px;
-            height: 600px;
-            position: relative;
-            padding: 10px;
-        }
-        a { text-decoration: none }
-        {#input:focus { outline:none; box-shadow: none}#}
-    </style>
+  <title>Instagram Clone :: ahnshy</title>
 </head>
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+
+<style>
+.main_body {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    background-color: #FAFAFA;
+}
+
+.left_body {
+    {#background-color: skyblue;#}
+    margin-right: 100px;
+    width: 500px;
+    height: 2000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right_body {
+    {#background-color: yellow;#}
+    padding-top: 20px;
+    width: 300px;
+    height: 1000px;
+    left: 72%;
+    position: fixed
+}
+
+.feed_box {
+    background-color: white;
+    width: 480px;
+    margin: 10px;
+    min-height: auto;
+    padding-bottom: 10px;
+}
+
+.feed_img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.feed_content{
+    padding: 0px 10px;
+}
+
+.feed_like{
+    padding: 0px 10px;
+}
+
+.feed_reply{
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.feed_txt{
+    font-size: 14px;
+}
+
+
+
+.feed_icon{
+    padding: 5px 5px 0px 5px;
+    display: flex;
+    justify-content: space-between;
+}span{
+     padding-right: 5px;
+}
+
+.feed_name{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.feed_name_txt{
+    font-size: 14px;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+
+.profile_box {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+.profile_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.name_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.name_content_txt{
+    font-size: 12px;
+    padding: 0px 10px;
+    font-weight: bold;
+    color: lightgray;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 190px;
+}
+
+.big_profile_box {
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+.link_txt{
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.recommend_box {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.comment_box{
+    margin: 40px 0 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: lightgray;
+    display: flex;
+    flex-direction: column;
+}
+</style>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; width: 100%; z-index: 999">
-    <div class="container-fluid" style="justify-content: space-between;flex-wrap: nowrap; min-width: 800px">
-        <a class="navbar-brand" href="main"><img style="width: 100px" src="/assert/logo.png"/></a>
-        <input class="form-control me-2" style="width: 350px" type="search" placeholder="탐색" aria-label="Search"/>
-        <div style="display: flex">
-            <span class="material-icons">home</span>
-            <span class="material-icons-outlined">send</span>
-            <span class="material-icons-outlined">add_box</span>
-            <span class="material-icons-outlined">explore</span>
-            <span class="material-icons-outlined">favorite_border</span>
-        </div>
-        <div style="display: flex"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom" style="width: 100%;height: 50px;position: fixed;" >
+  <div class="container">
+    <img style="height: 30px; object-fit: contain"
+         src="/assert/logo.png">
+    <input class="form-control" style="width: 200px" type="search" placeholder="탐색" aria-label="Search">
+    <div>
+      <span class="material-icons">home</span>
+      <span class="material-icons">send</span>
+      <span class="material-icons-outlined">add_box</span>
+      <span class="material-icons-outlined">explore</span>
+      <span class="material-icons-outlined">favorite_border</span>
     </div>
+  </div>
 </nav>
 
-<div style="display: flex; flex-direction: row;text-align: center;justify-content: center; padding-top: 60px; background-color:#FAFAFA;">
-    <div style="width: 500px; min-width:500px; height:1000px; margin-right: 256px">
-        <div style="border: solid 1px gray; background-color: white;">
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px">
-                <div class="photobox">
-                    <img class="profile"
-                         src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo"/>
-                </div>
-                <div> ahnshy</div>
-            </div>
-
-            <div>
-                <img style="width: 100%" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg" />
-            </div>
-            <div style="display: flex; flex-direction: row; justify-content: space-between; margin: 0 20px">
-                <div>
-                    <span class="material-icons-outlined">favorite_border</span>
-                    <span class="material-icons-outlined">mode_comment</span>
-                    <span class="material-icons-outlined">send</span>
-                </div>
-                <div>
-                    <span class="material-icons">bookmark_border</span>
-                </div>
-            </div>
-            <div style="text-align: left; font-size: 14px; margin: 0 20px"> jk.park 외 <strong>7명</strong>이 좋아합니다.</div>
-            <div style="text-align: left; font-size: 14px; margin: 0 20px"><strong>kazuya</strong> 다양한 샘플링이 가능하여 좋았습니다.
-            </div>
-            <div style="text-align: left; font-size: 14px; margin: 0 20px"><strong>jk.park</strong> 덕분에 좋은 걸로 선택할 수
-                있었습니다.
-            </div>
-            <div style="text-align: left; font-size: 14px; margin: 0 20px"><strong>카카로트</strong> 출시 제품은 샘플링에 보여지는 색상과 다를
-                수 있습니다.
-            </div>
-            <div style="text-align: left; font-size: 14px; margin: 0 20px"><strong>LG트윈스</strong> 다른 색상으로 출시할 예정은 없으신가요?
-            </div>
-            <hr>
-            <div>
-                <input type="text" class="form-control" style="box-shadow: none; border: none" id="replayControl"
-                       placeholder="댓글 달기.."></div>
+<div class="main_body">
+  <div class="left_body">
+    <div class="border feed_box">
+      <div class="feed_name">
+        <div class="profile_box">
+          <img class="profile_img" src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">
         </div>
+        <span class="feed_name_txt"> ahnshy
+        </span>
+      </div>
+      <img class="feed_img" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">
+
+      <div class="feed_icon">
+        <div>
+          <span class="material-icons-outlined">
+            favorite_border
+          </span>
+          <span class="material-icons-outlined">
+            mode_comment
+          </span>
+          <span class="material-icons-outlined">
+            send
+          </span>
+        </div>
+        <div>
+          <span class="material-icons-outlined">
+            turned_in_not
+          </span>
+        </div>
+      </div>
+      <div class="feed_like">
+        <p class="feed_txt"> <strong>좋아요 7개</strong></p>
+      </div>
+      <div class="feed_content">
+        <p class="feed_txt"> <strong> ahnshy </strong> 다양한 샘플링을 준비하였습니다. 편하게 구경 오십시요. [장소] 아래에....</p>
+      </div>
+      <div class="feed_reply">
+        <span class="feed_txt"> <strong> kazuya </strong> 다양한 샘플링이 가능하여 좋았습니다. 센스 지리셨습니다.</span>
+         <span class="feed_txt"> <strong> jk.park </strong> 덕분에 좋은 걸로 선택할 수 있었습니다.</span>
+        <span class="feed_txt"> <strong> 카카로트 </strong> 출시 제품은 샘플링에 보여지는 색상과 다소 달라 보일 수 있습니다. </span>
+        <span class="feed_txt"> <strong> LG트윈스 </strong> 다른 색상으로 출시할 예정은 없으신가요? </span>
+      </div>
     </div>
 
-    <div style="width: 400px; height: 1000px; position: fixed;left:62%">
-        <div>
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px">
-                    <div class="photobox_large" style="width:65px; height:65px">
-                        <img class="profile"
-                             src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>ahnshy</strong></div>
-                        <div style="color: rgb(128,128,128)">HoSeong, Ahn</div>
-                    </div>
-            </div>
+    <div class="border feed_box">
+      <div class="feed_name">
+        <div class="profile_box">
+          <img class="profile_img" src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">
         </div>
-        <div style="display: flex; flex-direction: row; align-items:center; justify-content: space-between">
-            <div style="font-weight: bold; color : rgb(128,128,128)">
-                회원님을 위한 추천
-            </div>
-            <div>
-                <a href="#" style="font-weight: bold">모두 보기</a>
-            </div>
-        </div>
+        <span class="feed_name_txt"> ahnshy
+        </span>
+      </div>
+      <img class="feed_img" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">
+
+      <div class="feed_icon">
         <div>
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
-                <div style="display: flex; flex-direction: row">
-                    <div class="photobox_candidate">
-                        <img class="profile_normal"
-                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F003%2F2014%2F12%2F17%2FNISI20141217_0010452634_web_99_20141217164836.jpg&type=sc960_832"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>Little Rocket Man</strong></div>
-                        <div style="color: rgb(128,128,128)">Jung il, Kim</div>
-                    </div>
-                </div>
-                <div style="margin-left: auto;"><a href="#">팔로우</a></div>
-            </div>
+          <span class="material-icons-outlined">
+            favorite_border
+          </span>
+          <span class="material-icons-outlined">
+            mode_comment
+          </span>
+          <span class="material-icons-outlined">
+            send
+          </span>
         </div>
         <div>
-             <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
-                 <div style="display: flex; flex-direction: row">
-                    <div class="photobox_candidate">
-                        <img class="profile_normal"
-                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MTJfNTUg%2FMDAxNzIwNzg0Nzk2MzIz.GgIu0rbP3NBCR8qTjWQpsb77jw4NN0lpbiurvOM7HPMg.CKSBAJtXvUKWH45I19HGG-fViqoXOp_w9gJ_1YHjJyIg.JPEG%2FIMG_6747.JPG&type=sc960_832"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>Captain Park</strong></div>
-                        <div style="color: rgb(128,128,128)">Ji Seong, Park</div>
-                    </div>
-                 </div>
-                 <div style="margin-left: auto;"><a href="#">팔로우</a></div>
-            </div>
+          <span class="material-icons-outlined">
+            turned_in_not
+          </span>
         </div>
-        <div>
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
-                <div style="display: flex; flex-direction: row">
-                    <div class="photobox_candidate">
-                        <img class="profile_normal"
-                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F413%2F2024%2F02%2F24%2F0000173048_002_20240224220101480.jpg&type=sc960_832"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>SON</strong></div>
-                        <div style="color: rgb(128,128,128)">Heong Min, Son</div>
-                    </div>
-                </div>
-                <div style="margin-left: auto;"><a href="#">팔로우</a></div>
-            </div>
-        </div>
-        <div>
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
-                <div style="display: flex; flex-direction: row">
-                    <div class="photobox_candidate">
-                        <img class="profile_normal"
-                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMTdfMjkz%2FMDAxNzEwNjM1NzQ1MTk4.zbE-0SGjNYp4LhoQaBOgGyeTipERY03KcAFXXb8flSEg.3zFIQ7GIJZlAtT8IEglrbI8EyHLuPGA_6X_nIiosNYIg.JPEG%2FChan_Ho_Park-004.jpg&type=sc960_832"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>Korean Major League</strong></div>
-                        <div style="color: rgb(128,128,128)">Chan Ho, Park</div>
-                    </div>
-                </div>
-                <div style="margin-left: auto;"><a href="#">팔로우</a></div>
-            </div>
-        </div>
-        <div>
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
-                <div style="display: flex; flex-direction: row">
-                    <div class="photobox_candidate">
-                        <img class="profile_normal"
-                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F020%2F2015%2F04%2F10%2Fd4_rVcKOGd_99_20150410095303.jpg&type=sc960_832"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>Java Daddy</strong></div>
-                        <div style="color: rgb(128,128,128)">James Gosling</div>
-                    </div>
-                </div>
-                <div style="margin-left: auto;"><a href="#">팔로우</a></div>
-            </div>
-        </div>
-        <div>
-            <div style="display:flex; flex-direction: row; align-items: center; margin-left: 20px; font-size: 14px">
-                <div style="display: flex; flex-direction: row">
-                    <div class="photobox_candidate">
-                        <img class="profile_normal"
-                             src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MTlfMTcz%2FMDAxNzI0MDU0NDEyNjU5.RW5nXHmaGJ4QQ9h2ylALPplbxAuhVj38seIZJIwRHdIg.LeZfGQcPdlUEzLGpClQ4CEbNIgMaOnZ0OYsvHgiICUAg.JPEG%2FElon_Musk_--_Billionaire_Bachelor_%25281%2529.jpeg&type=sc960_832"/>
-                    </div>
-                    <div style="margin-left: 10px; text-align: left;">
-                        <div><strong>Tesla Model</strong></div>
-                        <div style="color: rgb(128,128,128)">Elon, Musk</div>
-                    </div>
-                </div>
-                <div style="margin-left: auto;"><a href="#">팔로우</a></div>
-            </div>
-        </div>
-        <div> 소개 도움말 홍보센터</div>
-        <div> 2024 Instagram Meta</div>
+      </div>
+      <div class="feed_like">
+        <p class="feed_txt"> <strong>좋아요 7개</strong></p>
+      </div>
+      <div class="feed_content">
+        <p class="feed_txt"> <strong> ahnshy </strong> 다양한 샘플링을 준비하였습니다. 편하게 구경 오십시요. [장소] 아래에....</p>
+      </div>
+      <div class="feed_reply">
+        <span class="feed_txt"> <strong> kazuya </strong> 다양한 샘플링이 가능하여 좋았습니다. 센스 지리셨습니다.</span>
+         <span class="feed_txt"> <strong> jk.park </strong> 덕분에 좋은 걸로 선택할 수 있었습니다.</span>
+        <span class="feed_txt"> <strong> 카카로트 </strong> 출시 제품은 샘플링에 보여지는 색상과 다소 달라 보일 수 있습니다. </span>
+        <span class="feed_txt"> <strong> LG트윈스 </strong> 다른 색상으로 출시할 예정은 없으신가요? </span>
+      </div>
     </div>
+
+  </div>
+  <div class="right_body">
+    <div class="feed_name" style="justify-content: space-between">
+      <div style="display: flex; align-items: center; ">
+        <div class="big_profile_box">
+          <img class="profile_img"
+               src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">
+        </div>
+        <div class="name_content">
+          <span class="feed_name_txt"> ahnshy </span>
+          <span class="name_content_txt"> HoSeong, Ahn</span>
+        </div>
+      </div>
+
+      <a class="link_txt" >
+        전환
+      </a>
+    </div>
+
+    <div class="recommend_box">
+      <span style="color: gray"> 회원님을 위한 추천</span>
+      <span style="font-size: 12px"> 모두 보기 </span>
+    </div>
+    <div>
+      <div class="feed_name" style="justify-content: space-between">
+        <div class="profile_box">
+          <img class="profile_img"
+               src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F003%2F2014%2F12%2F17%2FNISI20141217_0010452634_web_99_20141217164836.jpg&type=sc960_832">
+        </div>
+        <div class="name_content">
+          <span class="feed_name_txt"> RocketBoy (Jung il, Kim) </span>
+          <span class="name_content_txt"> 12,421,625명이 팔로우 </span>
+        </div>
+        <a class="link_txt">
+          팔로우
+        </a>
+      </div>
+      <div class="feed_name" style="justify-content: space-between">
+        <div class="profile_box">
+          <img class="profile_img"
+               src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MTJfNTUg%2FMDAxNzIwNzg0Nzk2MzIz.GgIu0rbP3NBCR8qTjWQpsb77jw4NN0lpbiurvOM7HPMg.CKSBAJtXvUKWH45I19HGG-fViqoXOp_w9gJ_1YHjJyIg.JPEG%2FIMG_6747.JPG&type=sc960_832">
+        </div>
+        <div class="name_content">
+          <span class="feed_name_txt"> Captain Park </span>
+          <span class="name_content_txt"> ahnshy 외 9,841,915명이 팔로우</span>
+        </div>
+        <a class="link_txt">
+          팔로우
+        </a>
+      </div>
+      <div class="feed_name" style="justify-content: space-between">
+        <div class="profile_box">
+          <img class="profile_img"
+               src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F413%2F2024%2F02%2F24%2F0000173048_002_20240224220101480.jpg&type=sc960_832">
+        </div>
+        <div class="name_content">
+          <span class="feed_name_txt"> SON </span>
+          <span class="name_content_txt"> ahnshy 외 6,127,544명이 팔로우</span>
+        </div>
+        <a class="link_txt">
+          팔로우
+        </a>
+      </div>
+      <div class="feed_name" style="justify-content: space-between">
+        <div class="profile_box">
+          <img class="profile_img"
+               src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F020%2F2015%2F04%2F10%2Fd4_rVcKOGd_99_20150410095303.jpg&type=sc960_832">
+        </div>
+        <div class="name_content">
+          <span class="feed_name_txt"> Java Daddy </span>
+          <span class="name_content_txt"> 소녀시대 외 2,114,902명이 팔로우</span>
+        </div>
+        <a class="link_txt">
+          팔로우
+        </a>
+      </div>
+      <div class="feed_name" style="justify-content: space-between">
+        <div class="profile_box">
+          <img class="profile_img"
+               src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MTlfMTcz%2FMDAxNzI0MDU0NDEyNjU5.RW5nXHmaGJ4QQ9h2ylALPplbxAuhVj38seIZJIwRHdIg.LeZfGQcPdlUEzLGpClQ4CEbNIgMaOnZ0OYsvHgiICUAg.JPEG%2FElon_Musk_--_Billionaire_Bachelor_%25281%2529.jpeg&type=sc960_832">
+        </div>
+        <div class="name_content">
+          <span class="feed_name_txt"> Tesla Model</span>
+          <span class="name_content_txt"> 최근에 가입 </span>
+        </div>
+        <a class="link_txt">
+          팔로우
+        </a>
+      </div>
+    </div>
+    <div class="comment_box">
+      <span> 소개 도움말 홍보센터 </span>
+      <span> @2024 Instagram Meta </span>
+      <br>
+      <span> ahnshy (https://github.com/ahnshy/) </span>
+
+    </div>
+  </div>
 </div>
+
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+-->
+
 </body>
 </html>
