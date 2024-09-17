@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c72b2fc-1b04-4793-98cd-ec8a4f1797e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InstagramClone/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstagramClone/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Instagram/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Instagram/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +103,7 @@
       <workItem from="1726395655146" duration="9000" />
       <workItem from="1726395689420" duration="12000" />
       <workItem from="1726395883964" duration="11219000" />
-      <workItem from="1726454931146" duration="1853000" />
+      <workItem from="1726454931146" duration="9658000" />
     </task>
     <servers />
   </component>
