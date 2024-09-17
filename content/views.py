@@ -3,6 +3,8 @@ from uuid import uuid4
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from user.models import User
 from .models import Feed
 import os
 from InstagramClone.settings import MEDIA_ROOT
@@ -12,8 +14,21 @@ logger = logging.getLogger("InstagramClone")
 class Main(APIView):
     def get(self, request):
         print("call Content get method.")
+
+        email = request.session.get('email', None)
+        # print(request.session['email']) # 로그인 계정
+
+        if email is None:
+            return render(request, "user/login.html")
+
+        user = User.objects.filter(email=email).first()
+        print(user) # 로그인 사용자 이름
+
+        if user is None:
+            return render(request, "user/login.html")
+
+
         feed_list = Feed.objects.all().order_by('-id')
-        #print(request.session['email']) # 로그인 계정
         return render(request, 'Instagram/index.html', context=dict(feed_list=feed_list))
 
     # def get(self, request):
@@ -53,7 +68,7 @@ class Main(APIView):
     #                               ))
     #
     #
-    #     return render(request, "jinstagram/main.html", context=dict(feeds=feed_list, user=user))
+    #     return render(request, "instagram/index.html", context=dict(feeds=feed_list, user=user))
 
 
 class UploadFeed(APIView):
