@@ -33,7 +33,6 @@ class Login(APIView):
         return render(request, "user/login.html")
 
     def post(self, request):
-        # TODO 로그인
         email = request.data.get('email', None)
         password = request.data.get('password', None)
 
