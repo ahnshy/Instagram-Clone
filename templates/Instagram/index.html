@@ -429,6 +429,39 @@
     </div>
 </div>
 
+<div id="second_modal" class="modal_overlay">
+    <div class="modal_window">
+        <div style="display: flex; flex-direction: row; justify-content: space-between">
+            <div style="width: 40px;">
+
+            </div>
+            <div>
+                새 이미지 업로드
+            </div>
+            <div style="width: 40px;">
+                <span id="close_modal2" class="modal_close material-icons-outlined">close</span>
+            </div>
+        </div>
+
+        <div style="border-top: solid 1px;display: flex; flex-direction: row;margin-top: 10px">
+            <div class="img_upload_space" style="width: 500px; height: 540px;">
+
+            </div>
+            <div style="border-left: solid 1px ">
+                <div>
+                    <textarea id="input_feed_content" class="form-control" style="width: 276px; height: 400px"
+                              id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                <button id="feed_create_button" type="button" class="btn btn-primary" style="width: 100%">
+                    공유하기
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 <!-- Jquery -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
@@ -450,6 +483,16 @@
 
     $('#close_modal').click(function () {
         $('#first_modal').css({
+            display: 'none'
+        });
+
+        $(document.body).css({
+            overflow: 'visible'
+        });
+    });
+
+    $('#close_modal2').click(function () {
+        $('#second_modal').css({
             display: 'none'
         });
 
@@ -494,7 +537,7 @@
         if (files[0].type.match(/image.*/)) {
 
             $('#first_modal').css({
-                //display: 'none'
+                display: 'none'
             });
             $('#second_modal').css({
                 display: 'flex'
