@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c72b2fc-1b04-4793-98cd-ec8a4f1797e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/user/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InstagramClone/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/InstagramClone/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +104,7 @@
       <workItem from="1726395655146" duration="9000" />
       <workItem from="1726395689420" duration="12000" />
       <workItem from="1726395883964" duration="11219000" />
-      <workItem from="1726454931146" duration="20352000" />
+      <workItem from="1726454931146" duration="21395000" />
     </task>
     <servers />
   </component>
