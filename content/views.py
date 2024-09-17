@@ -13,6 +13,7 @@ class Main(APIView):
     def get(self, request):
         print("call Content get method.")
         feed_list = Feed.objects.all().order_by('-id')
+        #print(request.session['email']) # 로그인 계정
         return render(request, 'Instagram/index.html', context=dict(feed_list=feed_list))
 
     # def get(self, request):
