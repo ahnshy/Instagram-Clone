@@ -22,14 +22,14 @@ class Main(APIView):
             return render(request, "user/login.html")
 
         user = User.objects.filter(email=email).first()
-        print(user) # 로그인 사용자 이름
+        #print(user.name) # 로그인 사용자 이름
 
         if user is None:
             return render(request, "user/login.html")
 
 
         feed_list = Feed.objects.all().order_by('-id')
-        return render(request, 'Instagram/index.html', context=dict(feed_list=feed_list))
+        return render(request, 'Instagram/index.html', context=dict(feed_list=feed_list, user=user))
 
     # def get(self, request):
     #     email = request.session.get('email', None)
