@@ -439,7 +439,7 @@
                 새 이미지 업로드
             </div>
             <div style="width: 40px;">
-                <span id="close_modal2" class="modal_close material-icons-outlined">close</span>
+                <span id="close_sec_modal" class="modal_close material-icons-outlined">close</span>
             </div>
         </div>
 
@@ -491,7 +491,7 @@
         });
     });
 
-    $('#close_modal2').click(function () {
+    $('#close_sec_modal').click(function () {
         $('#second_modal').css({
             display: 'none'
         });
@@ -501,10 +501,40 @@
         });
     });
 
-      $('.img_upload_space')
-        .on("dragover", dragOver)
-        .on("dragleave", dragOver)
-        .on("drop", uploadFiles);
+    $('#feed_create_button').click(function () {
+        let file = files[0];
+        let image = files[0].name;
+        let content = $('#input_feed_content').val();
+
+        let fd = new FormData();
+
+        fd.append('file', file);
+        fd.append('image', image);
+        fd.append('content', content);
+
+        $.ajax({
+            url: "/content/upload",
+            data: fd,
+            method: "POST",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                console.log("upload succeed.");
+            },
+            error: function (request, status, error) {
+                console.log("upload error.");
+            },
+            complete: function () {
+                console.log("upload completed.");
+                location.replace("/main");
+            }
+        });
+    });
+
+    $('.img_upload_space')
+      .on("dragover", dragOver)
+      .on("dragleave", dragOver)
+      .on("drop", uploadFiles);
 
     function dragOver(e) {
         e.stopPropagation();

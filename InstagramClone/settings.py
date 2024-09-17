@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'content',
+    'InstagramClone'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,14 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+
+# 각 media 파일에 대한 URL Prefix
+MEDIA_URL = '/media/' # 항상 / 로 끝나도록 설정
+# MEDIA_URL = 'http://static.myservice.com/media/' 다른 서버로 media 파일 복사시
+# 업로드된 파일을 저장할 디렉토리 경로
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
