@@ -4,7 +4,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" type="image/png" href="assert/favicon.ico"/>
+    {% load static %}
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -216,16 +217,20 @@
 
 <div class="main_body">
     <div class="left_body">
+      {% for feed in feeds %}
         <div class="border feed_box">
             <div class="feed_name">
                 <div class="profile_box">
                     <img class="profile_img"
-                         src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">
+                         src="{% get_media_prefix %}{{ feed.profile_image }}" />
+{#                         src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">#}
                 </div>
-                <span class="feed_name_txt"> ahnshy
+                <span class="feed_name_txt"> {{ feed.nickname }}
         </span>
             </div>
-            <img class="feed_img" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">
+            <img class="feed_img"
+                    src="{% get_media_prefix %}{{ feed.image }}" />
+{#                 src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">#}
 
             <div class="feed_icon">
                 <div>
@@ -258,50 +263,7 @@
                 <span class="feed_txt"> <strong> LG트윈스 </strong> 다른 색상으로 출시할 예정은 없으신가요? </span>
             </div>
         </div>
-
-        <div class="border feed_box">
-            <div class="feed_name">
-                <div class="profile_box">
-                    <img class="profile_img"
-                         src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">
-                </div>
-                <span class="feed_name_txt"> ahnshy
-        </span>
-            </div>
-            <img class="feed_img" src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">
-
-            <div class="feed_icon">
-                <div>
-          <span class="material-icons-outlined">
-            favorite_border
-          </span>
-                    <span class="material-icons-outlined">
-            mode_comment
-          </span>
-                    <span class="material-icons-outlined">
-            send
-          </span>
-                </div>
-                <div>
-          <span class="material-icons-outlined">
-            turned_in_not
-          </span>
-                </div>
-            </div>
-            <div class="feed_like">
-                <p class="feed_txt"><strong>좋아요 7개</strong></p>
-            </div>
-            <div class="feed_content">
-                <p class="feed_txt"><strong> ahnshy </strong> 다양한 샘플링을 준비하였습니다. 편하게 구경 오십시요. [장소] 아래에....</p>
-            </div>
-            <div class="feed_reply">
-                <span class="feed_txt"> <strong> kazuya </strong> 다양한 샘플링이 가능하여 좋았습니다. 센스 지리셨습니다.</span>
-                <span class="feed_txt"> <strong> jk.park </strong> 덕분에 좋은 걸로 선택할 수 있었습니다.</span>
-                <span class="feed_txt"> <strong> 카카로트 </strong> 출시 제품은 샘플링에 보여지는 색상과 다소 달라 보일 수 있습니다. </span>
-                <span class="feed_txt"> <strong> LG트윈스 </strong> 다른 색상으로 출시할 예정은 없으신가요? </span>
-            </div>
-        </div>
-
+      {% endfor %}
     </div>
     <div class="right_body">
         <div class="feed_name" style="justify-content: space-between">
