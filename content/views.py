@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from user.models import User
-from .models import Feed, Reply
+from .models import Feed, Reply, Like
 import os
 from InstagramClone.settings import MEDIA_ROOT
 
@@ -126,3 +126,24 @@ class UploadReply(APIView):
         Reply.objects.create(feed_id=feed_id, reply_content=reply_content, email=email)
 
         return Response(status=200)
+
+    class ToggleLike(APIView):
+        def post(self, request):
+            feed_id = request.data.get('feed_id', None)
+            favorite_text = request.data.get('favorite_text', True)
+
+            if favorite_text == 'favorite_border':
+                is_like = True
+            else:
+                is_like = False
+            email = request.session.get('email', None)
+
+            like = Like.objects.filter(feed_id=feed_id, email=email).first()
+
+            if like:
+                like.is_like = is_like
+                like.save()
+            else:
+                Like.objects.create(feed_id=feed_id, is_like=is_like, email=email)
+
+            return Response(status=200)
