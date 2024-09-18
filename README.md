@@ -19,7 +19,7 @@ Instagram Clone ia a toy project with django framework on Python.
 [Depedency] <br/>
 ![image](https://github.com/user-attachments/assets/d70d7f77-4a4f-42c0-8e17-238130b85709)
 
-[Instagram Prview]<br/>
+[Instagram Website] - https://www.instagram.com/ <br/>
 ![image](https://github.com/user-attachments/assets/fc621d00-10b4-4024-a50f-fb450c74aece)<br/>
 
 [Instagram Clone Demo]<br/>
