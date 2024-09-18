@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from user.models import User
-from .models import Feed
+from .models import Feed, Reply
 import os
 from InstagramClone.settings import MEDIA_ROOT
 
@@ -116,3 +116,13 @@ class Profile(APIView):
         #                                                             like_feed_list=like_feed_list,
         #                                                             bookmark_feed_list=bookmark_feed_list,
         #                                                             user=user))
+
+class UploadReply(APIView):
+    def post(self, request):
+        feed_id = request.data.get('feed_id', None)
+        reply_content = request.data.get('reply_content', None)
+        email = request.session.get('email', None)
+
+        Reply.objects.create(feed_id=feed_id, reply_content=reply_content, email=email)
+
+        return Response(status=200)
