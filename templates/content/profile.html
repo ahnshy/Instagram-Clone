@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/assert/favicon.ico"/>
     {% load static %}
 
     <!-- Bootstrap CSS -->
@@ -18,7 +19,7 @@
     <!-- Jquery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-    <title>Hello, world!</title>
+    <title>User Profile</title>
 
     <style>
         .box {
@@ -36,7 +37,7 @@
 
         .feed_box {
             margin: 20px 0;
-            border: solid 1px gray;
+            border: solid 1px rgb(128, 128, 128);
             background-color: white
         }
 
@@ -65,6 +66,15 @@
             height: 600px;
             position: relative;
             padding: 10px;
+        }
+
+        .profile_button {
+            font-size: 14px;
+            font-weight: 800;
+            background-color: RGB(219, 219, 219);
+            color: RGB(0, 0, 0);
+            border: none;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -115,13 +125,14 @@
             <div style="font-size: 26px; margin-right: 40px">
                 {{ user.nickname }}
             </div>
-            <button id="button_profile_upload" style="margin-right: 40px"> 프로필 사진 편집</button>
+            <button class="profile_button" id="button_profile_upload" style="margin-right: 10px"> &nbsp;&nbsp;프로필 편집&nbsp;&nbsp;</button>
+            <button class="profile_button" style="margin-right: 10px"> &nbsp;&nbsp;보관된 스토리 보기&nbsp;&nbsp;</button>
             <input type="file" id="input_fileupload" onchange="profile_upload();" style="display: none" />
-            <span class="material-icons-outlined" style="margin-right: 40px">settings</span>
+            <span class="material-icons-outlined" style="margin-top: 6px">settings</span>
         </div>
 
         <div style="margin-bottom: 20px">
-            게시물 내 게시물건수  팔로워 111 팔로잉 111
+            게시물 내 게시물 건수  팔로워 0 팔로잉 0
         </div>
         <div>
             <b>{{ user.name }}</b>
@@ -194,7 +205,7 @@
             </div>
         </div>
 
-        <div class="img_upload_space" style="border-top: solid 1px gray;width: 778px; height: 540px;margin-top: 10px">
+        <div class="img_upload_space" style="border-top: solid 1px rgb(128,128,128);width: 778px; height: 540px;margin-top: 10px">
 
         </div>
     </div>

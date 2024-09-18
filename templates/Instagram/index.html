@@ -19,6 +19,10 @@
 </head>
 <style>
     .main_body {
+        background-color: #FAFAFA;
+    }
+
+    .main_body_sub {
         display: flex;
         justify-content: center;
         padding-top: 50px;
@@ -129,8 +133,7 @@
     .name_content_txt {
         font-size: 12px;
         padding: 0px 10px;
-        font-weight: bold;
-        color: lightgray;
+        color: rgb(128, 128, 128);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -210,13 +213,12 @@
     }
 </style>
 
-<body>
+<body class="main_body">
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom"
      style="width: 100%;height: 50px;position: fixed;z-index: 999">
     <div class="container">
-        <img style="height: 30px; object-fit: contain"
-             src="/assert/logo.png">
-        <input class="form-control" style="width: 200px" type="search" placeholder="탐색" aria-label="Search">
+        <img style="height: 30px; object-fit: contain" src="/assert/logo.png"/>
+        <input class="form-control" style="width: 200px" type="search" placeholder="탐색" aria-label="Search"/>
         <div>
             <span class="material-icons">home</span>
             <span class="material-icons">send</span>
@@ -249,7 +251,7 @@
     </div>
 </nav>
 
-<div class="main_body">
+<div class="main_body_sub">
     <div class="left_body">
 
         {% for feed in feeds %}
@@ -273,12 +275,13 @@
                         <span class="material-icons-outlined">send</span>
                     </div>
                     <div>
-{#                        <span class="material-icons-outlined">turned_in_not</span>#}
-                          <span id="bookmark_{{ feed.id }}" feed_id="{{ feed.id }}" class="bookmark material-icons-outlined" style="cursor: pointer">
+                        {#                        <span class="material-icons-outlined">turned_in_not</span>#}
+                        <span id="bookmark_{{ feed.id }}" feed_id="{{ feed.id }}"
+                              class="bookmark material-icons-outlined" style="cursor: pointer">
                             {% if feed.is_marked %}
-                            bookmark
+                                bookmark
                             {% else %}
-                            bookmark_border
+                                bookmark_border
                             {% endif %}
                         </span>
                     </div>
@@ -290,23 +293,22 @@
                 <div class="feed_content">
                     <p class="feed_txt"><strong> {{ feed.nickname }} </strong> {{ feed.content }} </p>
                 </div>
-            </div>
 
+                <div id="reply_list_{{ feed.id }}">
+                    {% for reply in feed.reply_list %}
+                        <div style="margin: 0 20px;text-align: left;font-size: 14px">
+                            <b>{{ reply.nickname }}</b> {{ reply.reply_content }}</div>
+                    {% endfor %}
+                </div>
 
-            <div id="reply_list_{{ feed.id }}">
-                {% for reply in feed.reply_list %}
-                    <div style="margin: 0 20px;text-align: left;font-size: 14px">
-                        <b>{{ reply.nickname }}</b> {{ reply.reply_content }}</div>
-                {% endfor %}
-            </div>
-
-            <div style="display:flex;flex-direction: row;align-items: center; border-top: solid 1px rgb(128,128,128)">
-                <input id="reply_{{ feed.id }}" type="text" class="form-control"
-                       style="box-shadow: none; border: none; outline: none"
-                       placeholder="댓글 달기...">
-                <div feed_id="{{ feed.id }}" class="upload_reply"
-                     style="width: 50px;color: cornflowerblue; font-weight: bold">
-                    게시
+                <div style="display:flex;flex-direction: row;align-items: center; border-top: solid 1px rgb(128,128,128)">
+                    <input id="reply_{{ feed.id }}" type="text" class="form-control"
+                           style="box-shadow: none; border: none; outline: none"
+                           placeholder="댓글 달기...">
+                    <div feed_id="{{ feed.id }}" class="upload_reply"
+                         style="width: 50px;color: cornflowerblue; font-weight: bold">
+                        게시
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -331,7 +333,7 @@
 
         <div class="recommend_box">
             <span style="color: rgb(128,128,128)"> 회원님을 위한 추천</span>
-            <span style="font-size: 12px"> 모두 보기 </span>
+            <span style="font-size: 12px; font-weight:600; "> 모두 보기 </span>
         </div>
         <div>
             <div class="feed_name" style="justify-content: space-between">
@@ -401,20 +403,15 @@
             </div>
         </div>
         <div class="comment_box">
-            <span> 소개 도움말 홍보센터 </span>
+            <span> 소개 도움말 홍보센터 API 채용정보 </span>
+            <span> 개인정보처리방침 약관 위치 언어 Meta Verified </span>
+            <br>
             <span> @2024 Instagram Meta </span>
             <br>
             <span> ahnshy (https://github.com/ahnshy/) </span>
-
         </div>
     </div>
 </div>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
--->
 
 <!-- Modal -->
 <div id="first_modal" class="modal_overlay">
