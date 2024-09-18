@@ -6,7 +6,7 @@ Instagram Clone ia a toy project with django framework on Python.
 [Depedency Install Command] <br/>
 >  pip install djangorestframework
 >
-> #1 Create Dabase(sqlite3) <br/>
+> #1 Create Database(SQLite3) <br/>
 > python manage.py makemigrations <br/>
 > python manage.py migrate <br/><br/>
 >
