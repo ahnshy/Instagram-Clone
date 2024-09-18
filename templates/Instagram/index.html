@@ -493,7 +493,7 @@
         let reply_content = $('#' + reply_id).val();
 
         if (reply_content.length <= 0) {
-            alert("댓글을 입력하세요");
+            alert("댓글을 입력 해 주십시요.");
             return 0;
         }
 
@@ -505,17 +505,16 @@
             },
             method: "POST",
             success: function (data) {
-                console.log("성공");
-                alert("댓글 성공");
+                console.log("reply succeed.");
                 $("#reply_list_" + feed_id).append("<div style='margin: 0 20px;text-align: left;font-size: 14px'><b>{{ user.nickname }}</b> " + reply_content + "</div>")
                 {#location.replace('/main');#}
 
             },
             error: function (request, status, error) {
-                console.log("에러");
+                console.log("reply error.");
             },
             complete: function () {
-                console.log("완료");
+                console.log("reply completed.");
                 $('#' + reply_id).val('');
             }
         });
@@ -620,6 +619,67 @@
         }
 
     }
+
+    $(".bookmark").click(function (event) {
+        let feed_id = event.target.attributes.getNamedItem('feed_id').value;
+        let bookmark_id = event.target.id;
+        let bookmark_text = $.trim($('#' + bookmark_id).html());
+        if (bookmark_text == 'bookmark') {
+            $('#' + bookmark_id).html('bookmark_border');
+        } else {
+            $('#' + bookmark_id).html('bookmark');
+        }
+
+        $.ajax({
+            url: "/content/bookmark",
+            data: {
+                feed_id: feed_id,
+                bookmark_text: bookmark_text
+            },
+            method: "POST",
+            success: function (data) {
+                console.log("bookmark succeed.");
+            },
+            error: function (request, status, error) {
+                console.log("bookmark error.");
+            },
+            complete: function () {
+                console.log("bookmark completed.");
+            }
+        });
+    });
+
+
+    $(".favorite").click(function (event) {
+        let feed_id = event.target.attributes.getNamedItem('feed_id').value;
+        let favorite_id = event.target.id;
+        console.log(favorite_id);
+        let favorite_text = $.trim($('#' + favorite_id).html());
+        console.log(favorite_text);
+        if (favorite_text == 'favorite') {
+            $('#' + favorite_id).html('favorite_border');
+        } else {
+            $('#' + favorite_id).html('favorite');
+        }
+
+        $.ajax({
+            url: "/content/like",
+            data: {
+                feed_id: feed_id,
+                favorite_text: favorite_text
+            },
+            method: "POST",
+            success: function (data) {
+                console.log("content like succeed.");
+            },
+            error: function (request, status, error) {
+                console.log("content like error.");
+            },
+            complete: function () {
+                console.log("content like completed.");
+            }
+        });
+    });
 </script>
 </body>
 </html>
