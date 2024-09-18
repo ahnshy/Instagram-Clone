@@ -107,7 +107,7 @@
         overflow: hidden;
     }
 
-     .profile_small_box {
+    .profile_small_box {
         width: 25px;
         height: 25px;
         border-radius: 70%;
@@ -251,54 +251,65 @@
 
 <div class="main_body">
     <div class="left_body">
-{#      {% for feed in feeds %}#}
-        {% for feed in feed_list %}
-        <div class="border feed_box">
-            <div class="feed_name">
-                <div class="profile_box">
-                    <img class="profile_img"
-                         src="{% get_media_prefix %}{{ feed.image }}" />
-{#                         src="https://lh3.googleusercontent.com/ogw/AF2bZyibETZrm1mWEbNUe6nFCjPyucYxEhlpz9NnG6hzMiSY7g=s32-c-mo">#}
-                </div>
-                <span class="feed_name_txt"> {{ feed.email }}
-        </span>
-            </div>
-            <img class="feed_img"
-                    src="{% get_media_prefix %}{{ feed.image }}" />
-{#                 src="https://www.printrobo.co.kr/cdn/contents/free-sample-kit-printrobo-900x596.jpg">#}
 
-            <div class="feed_icon">
-                <div>
-          <span class="material-icons-outlined">
-            favorite_border
-          </span>
-                    <span class="material-icons-outlined">
-            mode_comment
-          </span>
-                    <span class="material-icons-outlined">
-            send
-          </span>
+        {% for feed in feeds %}
+            <div class="border feed_box">
+                <div class="feed_name">
+                    <div class="profile_box">
+                        <img class="profile_img" src="{% get_media_prefix %}{{ feed.profile_image }}"/>
+                    </div>
+                    <span class="feed_name_txt"> {{ feed.nickname }} </span>
                 </div>
-                <div>
-          <span class="material-icons-outlined">
-            turned_in_not
-          </span>
+
+                <img class="feed_img" src="{% get_media_prefix %}{{ feed.image }}"/>
+
+                <div class="feed_icon">
+                    <div>
+                        <span id="favorite_{{ feed.id }}" feed_id="{{ feed.id }}"
+                              class="favorite material-icons-outlined"
+                              style="color: red;cursor: pointer">{% if feed.is_liked %}
+                            favorite{% else %}favorite_border{% endif %}</span>
+                        <span class="material-icons-outlined">mode_comment</span>
+                        <span class="material-icons-outlined">send</span>
+                    </div>
+                    <div>
+{#                        <span class="material-icons-outlined">turned_in_not</span>#}
+                          <span id="bookmark_{{ feed.id }}" feed_id="{{ feed.id }}" class="bookmark material-icons-outlined" style="cursor: pointer">
+                            {% if feed.is_marked %}
+                            bookmark
+                            {% else %}
+                            bookmark_border
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="feed_like">
+                    <p class="feed_txt"><strong>{{ feed.like_count }}명</strong>이 좋아합니다.</p>
+                </div>
+                <div class="feed_content">
+                    <p class="feed_txt"><strong> {{ feed.nickname }} </strong> {{ feed.content }} </p>
                 </div>
             </div>
-            <div class="feed_like">
-                <p class="feed_txt"><strong>좋아요 7개</strong></p>
+
+
+            <div id="reply_list_{{ feed.id }}">
+                {% for reply in feed.reply_list %}
+                    <div style="margin: 0 20px;text-align: left;font-size: 14px">
+                        <b>{{ reply.nickname }}</b> {{ reply.reply_content }}</div>
+                {% endfor %}
             </div>
-            <div class="feed_content">
-                <p class="feed_txt"><strong> {{ feed.email }} </strong> {{ feed.content }} </p>
+
+            <div style="display:flex;flex-direction: row;align-items: center; border-top: solid 1px rgb(128,128,128)">
+                <input id="reply_{{ feed.id }}" type="text" class="form-control"
+                       style="box-shadow: none; border: none; outline: none"
+                       placeholder="댓글 달기...">
+                <div feed_id="{{ feed.id }}" class="upload_reply"
+                     style="width: 50px;color: cornflowerblue; font-weight: bold">
+                    게시
+                </div>
             </div>
-            <div class="feed_reply">
-                <span class="feed_txt"> <strong> kazuya </strong> 다양한 샘플링이 가능하여 좋았습니다. 센스 지리셨습니다.</span>
-                <span class="feed_txt"> <strong> jk.park </strong> 덕분에 좋은 걸로 선택할 수 있었습니다.</span>
-                <span class="feed_txt"> <strong> 카카로트 </strong> 출시 제품은 샘플링에 보여지는 색상과 다소 달라 보일 수 있습니다. </span>
-                <span class="feed_txt"> <strong> LG트윈스 </strong> 다른 색상으로 출시할 예정은 없으신가요? </span>
-            </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
     </div>
     <div class="right_body">
         <div class="feed_name" style="justify-content: space-between">
@@ -416,11 +427,12 @@
                 새 이미지 업로드
             </div>
             <div style="width: 40px">
-                <span id ="close_modal" class="modal_close material-icons-outlined">close</span>
+                <span id="close_modal" class="modal_close material-icons-outlined">close</span>
             </div>
         </div>
 
-        <div class="img_upload_space" style="border-top: solid 1px rgb(128,128,128);width: 778px; height: 540px;margin-top: 10px">
+        <div class="img_upload_space"
+             style="border-top: solid 1px rgb(128,128,128);width: 778px; height: 540px;margin-top: 10px">
 
         </div>
     </div>
@@ -468,7 +480,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-     $('#nav_bar_add_box').click(function () {
+    $('#nav_bar_add_box').click(function () {
         $('#first_modal').css({
             display: 'flex'
         });
@@ -476,6 +488,41 @@
         $(document.body).css({
             overflow: 'hidden'
         });
+    });
+
+    $(".upload_reply").click(function (event) {
+        let feed_id = event.target.attributes.getNamedItem('feed_id').value;
+        let reply_id = 'reply_' + feed_id;
+        let reply_content = $('#' + reply_id).val();
+
+        if (reply_content.length <= 0) {
+            alert("댓글을 입력하세요");
+            return 0;
+        }
+
+        $.ajax({
+            url: "/content/reply",
+            data: {
+                feed_id: feed_id,
+                reply_content: reply_content
+            },
+            method: "POST",
+            success: function (data) {
+                console.log("성공");
+                alert("댓글 성공");
+                $("#reply_list_" + feed_id).append("<div style='margin: 0 20px;text-align: left;font-size: 14px'><b>{{ user.nickname }}</b> " + reply_content + "</div>")
+                {#location.replace('/main');#}
+
+            },
+            error: function (request, status, error) {
+                console.log("에러");
+            },
+            complete: function () {
+                console.log("완료");
+                $('#' + reply_id).val('');
+            }
+        });
+
     });
 
     $(".modal_close").click(function () {
@@ -486,7 +533,7 @@
             display: 'none'
         });
 
-         $(document.body).css({
+        $(document.body).css({
             overflow: 'visible'
         });
     });
@@ -522,9 +569,9 @@
     });
 
     $('.img_upload_space')
-      .on("dragover", dragOver)
-      .on("dragleave", dragOver)
-      .on("drop", uploadFiles);
+        .on("dragover", dragOver)
+        .on("dragleave", dragOver)
+        .on("drop", uploadFiles);
 
     function dragOver(e) {
         e.stopPropagation();
