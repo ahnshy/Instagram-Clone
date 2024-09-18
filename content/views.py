@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from user.models import User
-from .models import Feed, Reply, Like
+from .models import Feed, Reply, Like, Bookmark
 import os
 from InstagramClone.settings import MEDIA_ROOT
 
@@ -147,3 +147,24 @@ class UploadReply(APIView):
                 Like.objects.create(feed_id=feed_id, is_like=is_like, email=email)
 
             return Response(status=200)
+
+class ToggleBookmark(APIView):
+    def post(self, request):
+        feed_id = request.data.get('feed_id', None)
+        bookmark_text = request.data.get('bookmark_text', True)
+        print(bookmark_text)
+        if bookmark_text == 'bookmark_border':
+            is_marked = True
+        else:
+            is_marked = False
+        email = request.session.get('email', None)
+
+        bookmark = Bookmark.objects.filter(feed_id=feed_id, email=email).first()
+
+        if bookmark:
+            bookmark.is_marked = is_marked
+            bookmark.save()
+        else:
+            Bookmark.objects.create(feed_id=feed_id, is_marked=is_marked, email=email)
+
+        return Response(status=200)
