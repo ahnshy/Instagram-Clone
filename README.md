@@ -1,7 +1,7 @@
 # Instagram-Clone
 Instagram Clone ia a toy project with django framework on Python.
 
-<img src="https://img.shields.io/badge/django-092E20?logo=django&logoColor=white"/> <img src="https://img.shields.io/badge/Python-3776AB?logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/Bootstrapap-7952B3?logo=bootstrap&logoColor=white"/><img src="https://img.shields.io/badge/javascript-%23323330.svg?&logo=javascript&logoColor=%23F7DF1E"/> <img src="https://img.shields.io/badge/html5-%23E34F26.svg?&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white"/>
+<img src="https://img.shields.io/badge/django-092E20?logo=django&logoColor=white"/> <img src="https://img.shields.io/badge/SQLite-%2320232a.svg?&logo=sqlite&logoColor=#003B57"/> <img src="https://img.shields.io/badge/Bootstrapap-7952B3?logo=bootstrap&logoColor=white"/> <img src="https://img.shields.io/badge/Python-3776AB?logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-%23323330.svg?&logo=javascript&logoColor=%23F7DF1E"/> <img src="https://img.shields.io/badge/html5-%23E34F26.svg?&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white"/>
 
 [Depedency Install Command] <br/>
 >  pip install djangorestframework
